@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 6149726124357873462}
   - component: {fileID: 6149726124357873463}
   - component: {fileID: 6149726124357873456}
+  - component: {fileID: 2619084359142252982}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -497,6 +498,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.02118288, y: -0.25530937}
   m_Size: {x: 0.1588441, y: 0.40910983}
   m_Direction: 0
+--- !u!114 &2619084359142252982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149726124357873457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d238900e808cca0428887f59d9426471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 2233150603368876565}
+  _maxHealth: 100
+  _currentHealth: 0
 --- !u!1 &6149726125072423203
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,10 +720,43 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8032724029034021743, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2276778614516205882, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
     - {fileID: 3817776955606276494, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+--- !u!1 &2806701958561680486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6638963744250699752, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+  m_PrefabInstance: {fileID: 8849923832857023374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2233150603368876565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806701958561680486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb248b1122be7a147b0e4e79336969fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 4457983552737991730}
+--- !u!114 &4457983552737991730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5119694190540722108, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+  m_PrefabInstance: {fileID: 8849923832857023374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806701958561680486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4924273392039525495 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4505770446378545145, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}

@@ -31,13 +31,11 @@ namespace Player
         {
             if (_joystick.Horizontal > 0)
             {
-                Debug.Log("Бежим");
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
 
             if (_joystick.Horizontal < 0)
             {
-                Debug.Log("Бежим");
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
 
