@@ -4,6 +4,7 @@ namespace Enemy
 {
     public class EnemyMover : MonoBehaviour
     {
+        [SerializeField] private PlayerDetected _playerDetected;
         [SerializeField] private float _speedMove = 5f;
         [SerializeField] private float _range = 1;
 
@@ -28,7 +29,8 @@ namespace Enemy
                 _isAttack = false;
             }
 
-            //Move();
+            if (_playerDetected.IsDetected)
+                Move();
         }
 
         private void Move()
