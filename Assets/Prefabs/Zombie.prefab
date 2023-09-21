@@ -579,7 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDetected: {fileID: 1517723881}
   _speedMove: 1
-  _range: 0.5
+  _range: 0.6
 --- !u!114 &1517723881
 MonoBehaviour:
   m_ObjectHideFlags: 0
