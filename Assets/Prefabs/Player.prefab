@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &130227804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 130227805}
+  m_Layer: 0
+  m_Name: StartBullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &130227805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130227804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.46, y: 0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3871276946579576877}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3871276945704610477
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3871276945704610467
 SpriteRenderer:
@@ -114,7 +145,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3871276945734539383
 SpriteRenderer:
@@ -198,7 +229,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3871276946491514844
 SpriteRenderer:
@@ -280,9 +311,10 @@ Transform:
   m_LocalPosition: {x: 0.02, y: -0.202, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 130227805}
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3871276946579576876
 SpriteRenderer:
@@ -366,7 +398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.965}
 --- !u!212 &3871276946622893557
 SpriteRenderer:
@@ -450,7 +482,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3871276946996830832
 SpriteRenderer:
@@ -518,6 +550,7 @@ GameObject:
   - component: {fileID: 4443258076784123886}
   - component: {fileID: 7261954717895592802}
   - component: {fileID: 114266955}
+  - component: {fileID: 460169390}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -537,7 +570,6 @@ Transform:
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 3192888976080508421}
   - {fileID: 2294840202756340928}
   - {fileID: 3871276945704610476}
   - {fileID: 3871276946996830833}
@@ -547,6 +579,7 @@ Transform:
   - {fileID: 3871276946491514845}
   - {fileID: 3871276946579576877}
   - {fileID: 3871276945734539376}
+  - {fileID: 3192888976080508421}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -599,11 +632,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0296fcf97e4de2840a82d106467a4103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayEyeObject: {fileID: 0}
-  _toBoyDistance: 0
+  _player: {fileID: 3871276947062554839}
+  _rayEyeObject: {fileID: 3889899222363809021}
+  _toEnemyDistance: 4.5
   _layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &7261954717895592802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0c09427adbce349885c9ac058ec827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 2
   _joystick: {fileID: 0}
 --- !u!114 &114266955
 MonoBehaviour:
@@ -633,6 +667,24 @@ MonoBehaviour:
   _healthBar: {fileID: 7132444689419410497}
   _maxHealth: 100
   _currentHealth: 0
+--- !u!114 &460169390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871276947062554832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01a41bba2409e2439d26d04ab3778be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textCurrentBullet: {fileID: 0}
+  _textAllMagazinesBullet: {fileID: 0}
+  _allMagazines: 1
+  _bulletInMagazine: 10
+  _startBullet: {fileID: 130227805}
+  _bullet: {fileID: 2907405278248954553, guid: 49c86dc3fbf472a448002a6a452bda5f, type: 3}
 --- !u!1 &3871276947287225734
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +715,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 31.454}
 --- !u!212 &3871276947287225732
 SpriteRenderer:
@@ -747,7 +799,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3871276947702493322
 SpriteRenderer:
@@ -830,7 +882,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3871276947062554839}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2404745558981546809
 PrefabInstance:
@@ -869,7 +921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505770446378545145, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505770446378545145, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
       propertyPath: m_AnchorMax.x
