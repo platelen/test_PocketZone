@@ -1134,6 +1134,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.92635727, y: 10.008997}
   m_EdgeRadius: 0
+--- !u!114 &460169393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4443258076784123886, guid: e54dd3194c5b70b4fbcd6e2f100a1644, type: 3}
+  m_PrefabInstance: {fileID: 3871276946748495787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0296fcf97e4de2840a82d106467a4103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &522163009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12748,6 +12759,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 460169390, guid: e54dd3194c5b70b4fbcd6e2f100a1644, type: 3}
+      propertyPath: _findEnemy
+      value: 
+      objectReference: {fileID: 460169393}
+    - target: {fileID: 460169390, guid: e54dd3194c5b70b4fbcd6e2f100a1644, type: 3}
+      propertyPath: _startTimeBtwShots
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 460169390, guid: e54dd3194c5b70b4fbcd6e2f100a1644, type: 3}
       propertyPath: _textCurrentBullet
       value: 
       objectReference: {fileID: 1200633202}
@@ -12820,6 +12839,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 237685334, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
+      propertyPath: _speedMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 613288483829729012, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -12890,7 +12913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4197548456143625479, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4197548456199310799, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
       propertyPath: m_Layer
@@ -12906,11 +12929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5552015531725343196, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5552015531725343196, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6224386812388217046, guid: 23d268d6e2edb244ba53a24ca24cb713, type: 3}
       propertyPath: m_Layer

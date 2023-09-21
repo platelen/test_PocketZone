@@ -9,6 +9,9 @@ namespace Player
         [SerializeField] private float _toEnemyDistance;
         [SerializeField] private LayerMask _layerMask;
 
+        private bool _IsFire;
+
+        public bool IsFire => _IsFire;
 
         private void Update()
         {
@@ -34,10 +37,12 @@ namespace Player
 
             if (hit.collider != null)
             {
+                _IsFire = true;
                 Debug.DrawRay(_rayEyeObject.transform.position, rayDirection * hit.distance, Color.red);
             }
             else
             {
+                _IsFire = false;
                 Debug.DrawRay(_rayEyeObject.transform.position, rayDirection * _toEnemyDistance, Color.green);
             }
         }

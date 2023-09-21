@@ -15,9 +15,12 @@ namespace Player
 
         [Header("Shooting")] [SerializeField] private Transform _startBullet;
         [SerializeField] private GameObject _bullet;
+        [SerializeField] private FindEnemy _findEnemy;
+        [SerializeField] private float _startTimeBtwShots;
 
         private int _bulletsCurrent;
         private bool _isNoAmmo;
+        private float _timeBtwShots;
 
         private void Awake()
         {
@@ -33,10 +36,18 @@ namespace Player
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1") && _bulletsCurrent > 0)
+            if (_timeBtwShots <= 0)
             {
-                Shoot();
+                if (_findEnemy.IsFire && _bulletsCurrent > 0)
+                {
+                    Shoot();
+                }
             }
+            else
+            {
+                _timeBtwShots -= Time.deltaTime;
+            }
+
 
             CheckedBulletsAndMagazine();
 
@@ -48,6 +59,7 @@ namespace Player
         {
             _bulletsCurrent--;
             GameObject bullet = Instantiate(_bullet, _startBullet.position, _startBullet.rotation);
+            _timeBtwShots = _startTimeBtwShots;
         }
 
         private void Reload()
