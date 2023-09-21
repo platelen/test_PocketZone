@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1511880269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511880270}
+  - component: {fileID: 1511880272}
+  m_Layer: 3
+  m_Name: CheckPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1511880270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511880269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.265, y: -0.004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4197548456143625466}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1511880272
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511880269}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.14653544
 --- !u!1 &4197548454837271649
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +230,7 @@ GameObject:
   - component: {fileID: 6013787590525784414}
   - component: {fileID: 237685334}
   - component: {fileID: 237685339}
+  - component: {fileID: 677846236}
   m_Layer: 3
   m_Name: Mutant
   m_TagString: Enemy
@@ -207,6 +256,7 @@ Transform:
   - {fileID: 4197548456613689369}
   - {fileID: 4197548454914541349}
   - {fileID: 4197548454837271650}
+  - {fileID: 1511880270}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -260,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 7439870942877593340}
-  _maxHealth: 100
+  _maxHealth: 100000
   _currentHealth: 0
 --- !u!114 &237685334
 MonoBehaviour:
@@ -276,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDetected: {fileID: 237685339}
   _speedMove: 1
-  _range: 1
+  _range: 0.75
 --- !u!114 &237685339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +339,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8110bfe659bd9c743b8114edbb3f24be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeDetected: 4.5
+  _rangeDetected: 5
+--- !u!114 &677846236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197548456143625479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3f20b929e5df247a7106a5a7ac9f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyMover: {fileID: 237685334}
+  _damage: 30
+  _damageInterval: 1
+  _attackPos: {fileID: 1511880270}
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _radiusAttack: 0.5
 --- !u!1 &4197548456199310799
 GameObject:
   m_ObjectHideFlags: 0

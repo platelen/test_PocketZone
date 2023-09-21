@@ -6,11 +6,18 @@ namespace Enemy
     {
         [SerializeField] private PlayerDetected _playerDetected;
         [SerializeField] private float _speedMove = 5f;
-        [SerializeField] private float _range = 1;
+        [SerializeField] private float _range = 0.5f;
 
         private GameObject _target;
         private bool _isAttack;
         private Vector3 _previousPosition;
+
+        public bool IsAttack
+        {
+            get => _isAttack;
+            set => _isAttack = value;
+        }
+
 
         private void Start()
         {
@@ -20,6 +27,9 @@ namespace Enemy
 
         private void Update()
         {
+            if (_target == null)
+                return;
+
             if (Vector3.Distance(transform.position, _target.transform.position) < _range)
             {
                 _isAttack = true;

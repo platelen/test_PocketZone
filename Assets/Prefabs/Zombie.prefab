@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1318953911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318953912}
+  - component: {fileID: 1318953913}
+  m_Layer: 3
+  m_Name: CheckPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1318953912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318953911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.105, y: -0.159, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6149726124357873462}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1318953913
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318953911}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &6149726123762435778
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +481,8 @@ GameObject:
   - component: {fileID: 6149726124357873456}
   - component: {fileID: 2619084359142252982}
   - component: {fileID: 1517723875}
+  - component: {fileID: 1517723881}
+  - component: {fileID: 1517723887}
   m_Layer: 3
   m_Name: Zombie
   m_TagString: Enemy
@@ -459,6 +509,7 @@ Transform:
   - {fileID: 6149726125072423202}
   - {fileID: 6149726124314390214}
   - {fileID: 6149726123899889100}
+  - {fileID: 1318953912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -512,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 2233150603368876565}
-  _maxHealth: 100
+  _maxHealth: 100000
   _currentHealth: 0
 --- !u!114 &1517723875
 MonoBehaviour:
@@ -526,8 +577,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2265d0fd4bd38a4691d01dfed8c0027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedMove: 2
-  _range: 1
+  _playerDetected: {fileID: 1517723881}
+  _speedMove: 1
+  _range: 0.5
+--- !u!114 &1517723881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149726124357873457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8110bfe659bd9c743b8114edbb3f24be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rangeDetected: 4.5
+--- !u!114 &1517723887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149726124357873457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3f20b929e5df247a7106a5a7ac9f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyMover: {fileID: 1517723875}
+  _damage: 10
+  _damageInterval: 0.5
+  _attackPos: {fileID: 1318953912}
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _radiusAttack: 0.74
 --- !u!1 &6149726125072423203
 GameObject:
   m_ObjectHideFlags: 0
