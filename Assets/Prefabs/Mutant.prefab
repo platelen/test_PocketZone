@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197548454837271650}
   - component: {fileID: 4197548454837271651}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leg_Before_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197548454914541349}
   - component: {fileID: 4197548454914541350}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leg_Before_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,9 +180,11 @@ GameObject:
   - component: {fileID: 4197548456143625465}
   - component: {fileID: 4197548456143625464}
   - component: {fileID: 6013787590525784414}
-  m_Layer: 0
+  - component: {fileID: 237685334}
+  - component: {fileID: 237685339}
+  m_Layer: 3
   m_Name: Mutant
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +230,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &4197548456143625464
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -260,6 +262,34 @@ MonoBehaviour:
   _healthBar: {fileID: 7439870942877593340}
   _maxHealth: 100
   _currentHealth: 0
+--- !u!114 &237685334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197548456143625479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2265d0fd4bd38a4691d01dfed8c0027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerDetected: {fileID: 237685339}
+  _speedMove: 1
+  _range: 1
+--- !u!114 &237685339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197548456143625479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8110bfe659bd9c743b8114edbb3f24be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rangeDetected: 4.5
 --- !u!1 &4197548456199310799
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197548456199310784}
   - component: {fileID: 4197548456199310785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197548456462635182}
   - component: {fileID: 4197548456462635183}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leg_Back_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197548456613689369}
   - component: {fileID: 4197548456613689370}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leg_Back_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,6 +552,14 @@ PrefabInstance:
     - target: {fileID: 2145249705134826642, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
       propertyPath: m_Name
       value: Canvas_Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145249705134826642, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345573882051734685, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3655441436497241052, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -627,6 +665,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 41099bde02dfd6d469580dc577c1fbcf, type: 3}
+    - target: {fileID: 6638963744250699752, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7278741760364389301, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -638,6 +680,10 @@ PrefabInstance:
     - target: {fileID: 8032724029034021743, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110368042405362367, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2276778614516205882, guid: 368d5599f95e1c942934f085ab9f579b, type: 3}
