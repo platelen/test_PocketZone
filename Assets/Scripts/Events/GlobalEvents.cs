@@ -6,6 +6,7 @@ namespace Events
     public class GlobalEvents : MonoBehaviour
     {
         public static readonly UnityEvent OnStartAlertNoAmmo = new UnityEvent();
+        public static readonly UnityEvent OnStartShowInventory = new UnityEvent();
         public static readonly UnityEvent OnStartAmmo = new UnityEvent();
         public static readonly UnityEvent OnStartSendToReloadGun = new UnityEvent();
         public static readonly UnityEvent OnStartReloadGun = new UnityEvent();
@@ -14,6 +15,11 @@ namespace Events
         public static void SendAlertNoAmmo()
         {
             OnStartAlertNoAmmo.Invoke();
+        }
+
+        public static void SendShowInventory()
+        {
+            OnStartShowInventory.Invoke();
         }
 
         public static void SendStartAmmo()

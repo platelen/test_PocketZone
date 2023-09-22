@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ namespace Inventory
         public void Show()
         {
             _panelInventory.SetActive(true);
+            GlobalEvents.SendShowInventory();
         }
 
         public void Hide()
