@@ -60,9 +60,6 @@ namespace Inventory
 
         public void OnPointerClick(PointerEventData pointerData)
         {
-            if (_isEmpty)
-                return;
-
             if (pointerData.button == PointerEventData.InputButton.Right)
             {
                 OnRightMouseButtonClick?.Invoke(this);

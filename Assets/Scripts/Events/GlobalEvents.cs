@@ -7,6 +7,7 @@ namespace Events
     {
         public static readonly UnityEvent OnStartAlertNoAmmo = new UnityEvent();
         public static readonly UnityEvent OnStartShowInventory = new UnityEvent();
+        public static readonly UnityEvent OnStartResetDraggetItem = new UnityEvent();
         public static readonly UnityEvent OnStartAmmo = new UnityEvent();
         public static readonly UnityEvent OnStartSendToReloadGun = new UnityEvent();
         public static readonly UnityEvent OnStartReloadGun = new UnityEvent();
@@ -15,6 +16,10 @@ namespace Events
         public static void SendAlertNoAmmo()
         {
             OnStartAlertNoAmmo.Invoke();
+        }
+        public static void SendStartResetDraggedItem()
+        {
+            OnStartResetDraggetItem.Invoke();
         }
 
         public static void SendShowInventory()

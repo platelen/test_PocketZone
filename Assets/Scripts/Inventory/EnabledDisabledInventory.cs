@@ -23,6 +23,7 @@ namespace Inventory
         public void Hide()
         {
             _panelInventory.SetActive(false);
+            GlobalEvents.SendStartResetDraggedItem();
         }
     }
 }

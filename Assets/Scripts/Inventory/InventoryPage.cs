@@ -13,15 +13,16 @@ namespace Inventory
 
         private List<UIInventoryItem> _listUIItems = new List<UIInventoryItem>();
 
-        public Sprite image, image2;
-        public int quantity;
-        public string title;
-
         private int _currentlyDraggedItemIndex = -1;
+
+        public event Action<int> OnItemActionRequested, OnStartDragging, OnDescription;
+        public event Action<int, int> OnSwapItem;
 
         private void Awake()
         {
-            GlobalEvents.OnStartShowInventory.AddListener(SetDataInList);
+            GlobalEvents.OnStartShowInventory.AddListener(ResetSelection);
+            GlobalEvents.OnStartResetDraggetItem.AddListener(ResetDraggtedItem);
+
             _mouseFollower.Toggle(false);
         }
 
@@ -41,13 +42,21 @@ namespace Inventory
             }
         }
 
+        public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
+        {
+            if (_listUIItems.Count > itemIndex)
+            {
+                _listUIItems[itemIndex].SetData(itemImage, itemQuantity);
+            }
+        }
+
         private void HandleShowItemActions(UIInventoryItem inventoryItem)
         {
         }
 
         private void HandleEndDeag(UIInventoryItem inventoryItem)
         {
-            _mouseFollower.Toggle(false);
+            ResetDraggtedItem();
         }
 
         private void HandleSwap(UIInventoryItem inventoryItem)
@@ -56,14 +65,14 @@ namespace Inventory
 
             if (index == -1)
             {
-                _mouseFollower.Toggle(false);
-                _currentlyDraggedItemIndex = -1;
+                return;
             }
 
-            _listUIItems[_currentlyDraggedItemIndex].SetData(
-                index == 0 ? image : image2, quantity);
-            _listUIItems[index].SetData(
-                _currentlyDraggedItemIndex == 0 ? image : image2, quantity);
+            OnSwapItem?.Invoke(_currentlyDraggedItemIndex, index);
+        }
+
+        private void ResetDraggtedItem()
+        {
             _mouseFollower.Toggle(false);
             _currentlyDraggedItemIndex = -1;
         }
@@ -74,19 +83,59 @@ namespace Inventory
             if (index == -1)
                 return;
             _currentlyDraggedItemIndex = index;
+            HandleItemSelection(inventoryItem);
+            OnStartDragging?.Invoke(index);
+        }
+
+        public void CreateDraggedItem(Sprite sprite, int quantity)
+        {
             _mouseFollower.Toggle(true);
-            _mouseFollower.SetData(index == 0 ? image : image2, quantity);
+            _mouseFollower.SetData(sprite, quantity);
         }
 
         private void HandleItemSelection(UIInventoryItem inventoryItem)
         {
-            _listUIItems[0].Select();
+            int index = _listUIItems.IndexOf(inventoryItem);
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            OnDescription?.Invoke(index);
         }
 
-        private void SetDataInList()
+        private void ResetSelection()
         {
-            _listUIItems[0].SetData(image, quantity);
-            _listUIItems[1].SetData(image2, quantity);
+            DeselectAllItems();
+        }
+
+        private void DeselectAllItems()
+        {
+            foreach (UIInventoryItem item in _listUIItems)
+            {
+                item.Deselect();
+            }
+        }
+
+        protected virtual void OnOnItemActionRequested(int obj)
+        {
+            OnItemActionRequested?.Invoke(obj);
+        }
+
+        protected virtual void OnOnStartDragging(int obj)
+        {
+            OnStartDragging?.Invoke(obj);
+        }
+
+        protected virtual void OnOnSwapItem(int arg1, int arg2)
+        {
+            OnSwapItem?.Invoke(arg1, arg2);
+        }
+
+        protected virtual void OnOnDescription(int obj)
+        {
+            OnDescription?.Invoke(obj);
         }
     }
 }
