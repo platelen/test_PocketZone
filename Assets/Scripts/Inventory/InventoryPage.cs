@@ -69,6 +69,7 @@ namespace Inventory
             }
 
             OnSwapItem?.Invoke(_currentlyDraggedItemIndex, index);
+            HandleItemSelection(inventoryItem);
         }
 
         private void ResetDraggtedItem()
@@ -105,7 +106,7 @@ namespace Inventory
             OnDescription?.Invoke(index);
         }
 
-        private void ResetSelection()
+        public void ResetSelection()
         {
             DeselectAllItems();
         }
@@ -136,6 +137,21 @@ namespace Inventory
         protected virtual void OnOnDescription(int obj)
         {
             OnDescription?.Invoke(obj);
+        }
+
+        public void ResetAllItems()
+        {
+            foreach (var item in _listUIItems)
+            {
+                item.ResetData();
+                item.Deselect();
+            }
+        }
+
+        public void UpdateDescription(int itemIndex, Sprite itemImageItem, string itemNameItem)
+        {
+            DeselectAllItems();
+            _listUIItems[itemIndex].Select();
         }
     }
 }

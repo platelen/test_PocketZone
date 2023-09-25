@@ -18,6 +18,7 @@ namespace Inventory
         {
             _panelInventory.SetActive(true);
             GlobalEvents.SendShowInventory();
+            GlobalEvents.SendCurrentInventoryState();
         }
 
         public void Hide()

@@ -12,11 +12,18 @@ namespace Events
         public static readonly UnityEvent OnStartSendToReloadGun = new UnityEvent();
         public static readonly UnityEvent OnStartReloadGun = new UnityEvent();
         public static readonly UnityEvent OnStartDisableButtonReload = new UnityEvent();
+        public static readonly UnityEvent OnStartCurrentInventoryState = new UnityEvent();
 
         public static void SendAlertNoAmmo()
         {
             OnStartAlertNoAmmo.Invoke();
         }
+
+        public static void SendCurrentInventoryState()
+        {
+            OnStartCurrentInventoryState.Invoke();
+        }
+
         public static void SendStartResetDraggedItem()
         {
             OnStartResetDraggetItem.Invoke();
