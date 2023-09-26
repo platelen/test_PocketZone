@@ -960,15 +960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryPage: {fileID: 1995923627}
   _inventoryData: {fileID: 11400000, guid: d7112c87e2566bd4fa985144004fd3cd, type: 2}
-  initialItems:
-  - Quantity: 5
-    Item: {fileID: 11400000, guid: 60aa8623c2f890941b0c1db33e1d88ed, type: 2}
-  - Quantity: 0
-    Item: {fileID: 0}
-  - Quantity: 1
-    Item: {fileID: 11400000, guid: 698d8a3df924a3e4a90c72f61be68e23, type: 2}
-  - Quantity: 2
-    Item: {fileID: 11400000, guid: 60aa8623c2f890941b0c1db33e1d88ed, type: 2}
+  initialItems: []
 --- !u!82 &325578683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13386,6 +13378,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1728988154}
     m_Modifications:
+    - target: {fileID: 3030371072831460718, guid: 03b1779d33fa5cf4cacaacb5f7ecf0bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -32.951996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030371072831460718, guid: 03b1779d33fa5cf4cacaacb5f7ecf0bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.80603
+      objectReference: {fileID: 0}
     - target: {fileID: 3030371072964123940, guid: 03b1779d33fa5cf4cacaacb5f7ecf0bc, type: 3}
       propertyPath: m_Name
       value: Panel_Inventory
@@ -13564,6 +13564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Ammo
       objectReference: {fileID: 0}
+    - target: {fileID: 4136508490082367194, guid: c6ce922e90d794f4c8be03551c2c7e26, type: 3}
+      propertyPath: <InventoryItem>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 60aa8623c2f890941b0c1db33e1d88ed, type: 2}
     - target: {fileID: 4419934190527042063, guid: c6ce922e90d794f4c8be03551c2c7e26, type: 3}
       propertyPath: m_RootOrder
       value: 7

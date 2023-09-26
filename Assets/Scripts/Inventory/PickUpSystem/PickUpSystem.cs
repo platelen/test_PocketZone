@@ -1,4 +1,3 @@
-using Inventory.Model;
 using UnityEngine;
 
 namespace Inventory.PickUpSystem

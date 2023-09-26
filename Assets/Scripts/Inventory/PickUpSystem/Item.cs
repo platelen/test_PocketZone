@@ -1,5 +1,4 @@
 using System.Collections;
-using Inventory.Model;
 using UnityEngine;
 
 namespace Inventory.PickUpSystem

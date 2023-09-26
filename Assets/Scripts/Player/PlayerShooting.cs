@@ -22,6 +22,11 @@ namespace Player
         private bool _isNoAmmo;
         private float _timeBtwShots;
 
+        public void AddAllMagazine(int value)
+        {
+            _allMagazines += value;
+        }
+        
         private void Awake()
         {
             GlobalEvents.OnStartReloadGun.AddListener(Reload);

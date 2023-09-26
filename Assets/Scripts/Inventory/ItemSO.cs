@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace Inventory
 {
-    [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/ItemSO")]
-    public class ItemSo : ScriptableObject
+    public abstract class ItemSo : ScriptableObject
     {
         [field: SerializeField] public bool IsStackable { get; set; }
         public int ID => GetInstanceID();

@@ -9,7 +9,7 @@ namespace Inventory
         [SerializeField] private InventoryPage _inventoryPage;
         [SerializeField] private InventorySo _inventoryData;
 
-        public List<InventorySo.InventoryItem> initialItems = new List<InventorySo.InventoryItem>();
+        public List<InventoryItem> initialItems = new List<InventoryItem>();
 
         private void Start()
         {
@@ -21,8 +21,8 @@ namespace Inventory
         private void PrepareInventoryData()
         {
             _inventoryData.Initialize();
-            _inventoryData.OnInventoryUpdate += UpdateInventoryUI;
-            foreach (InventorySo.InventoryItem item in initialItems)
+            _inventoryData.OnInventoryUpdated += UpdateInventoryUI;
+            foreach (InventoryItem item in initialItems)
             {
                 if (item.IsEmpty)
                     continue;
@@ -30,12 +30,13 @@ namespace Inventory
             }
         }
 
-        private void UpdateInventoryUI(Dictionary<int, InventorySo.InventoryItem> inventoryState)
+        private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
             _inventoryPage.ResetAllItems();
             foreach (var item in inventoryState)
             {
-                _inventoryPage.UpdateData(item.Key, item.Value.Item.ImageItem, item.Value.Quantity);
+                _inventoryPage.UpdateData(item.Key, item.Value.item.ImageItem, 
+                    item.Value.quantity);
             }
         }
 
@@ -53,29 +54,27 @@ namespace Inventory
         }
 
         private void HandleDragging(int itemIndex)
-        {
-            InventorySo.InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
+        {InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-            _inventoryPage.CreateDraggedItem(inventoryItem.Item.ImageItem,
-                inventoryItem.Quantity);
+            _inventoryPage.CreateDraggedItem(inventoryItem.item.ImageItem, inventoryItem.quantity);
         }
 
         private void HandleSwapItem(int itemIndex1, int itemIndex2)
         {
-            _inventoryData.SwapItem(itemIndex1, itemIndex2);
+            _inventoryData.SwapItems(itemIndex1, itemIndex2);
         }
 
         private void HandleDescription(int itemIndex)
         {
-            InventorySo.InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
+            InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
             {
                 _inventoryPage.ResetSelection();
                 return;
             }
 
-            ItemSo item = inventoryItem.Item;
+            ItemSo item = inventoryItem.item;
             _inventoryPage.UpdateDescription(itemIndex, item.ImageItem, item.NameItem);
         }
 
@@ -84,8 +83,8 @@ namespace Inventory
             foreach (var item in _inventoryData.GetCurrentInventoryState())
             {
                 _inventoryPage.UpdateData(item.Key,
-                    item.Value.Item.ImageItem,
-                    item.Value.Quantity);
+                    item.Value.item.ImageItem,
+                    item.Value.quantity);
             }
         }
     }
