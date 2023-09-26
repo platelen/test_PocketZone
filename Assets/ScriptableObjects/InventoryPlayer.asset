@@ -12,5 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a367544a4f53a424db932e1983f24cc8, type: 3}
   m_Name: InventoryPlayer
   m_EditorClassIdentifier: 
-  _inventoryItems: []
+  _inventoryItems:
+  - Quantity: 0
+    Item: {fileID: 0}
+  - Quantity: 0
+    Item: {fileID: 0}
+  - Quantity: 1
+    Item: {fileID: 11400000, guid: 698d8a3df924a3e4a90c72f61be68e23, type: 2}
+  - Quantity: 0
+    Item: {fileID: 0}
+  - Quantity: 2
+    Item: {fileID: 11400000, guid: 60aa8623c2f890941b0c1db33e1d88ed, type: 2}
+  - Quantity: 0
+    Item: {fileID: 0}
+  - Quantity: 5
+    Item: {fileID: 11400000, guid: 60aa8623c2f890941b0c1db33e1d88ed, type: 2}
+  - Quantity: 0
+    Item: {fileID: 0}
+  - Quantity: 0
+    Item: {fileID: 0}
+  - Quantity: 0
+    Item: {fileID: 0}
   <Size>k__BackingField: 10
