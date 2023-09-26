@@ -10,6 +10,7 @@ namespace Inventory
         [SerializeField] private UIInventoryItem _itemPrefab;
         [SerializeField] private RectTransform _contentPanel;
         [SerializeField] private MouseFollower _mouseFollower;
+        [SerializeField] private ItemActionPanel _actionPanel;
 
         private List<UIInventoryItem> _listUIItems = new List<UIInventoryItem>();
 
@@ -22,6 +23,7 @@ namespace Inventory
         {
             GlobalEvents.OnStartShowInventory.AddListener(ResetSelection);
             GlobalEvents.OnStartResetDraggetItem.AddListener(ResetDraggtedItem);
+            GlobalEvents.OnStartDisableActionPanel.AddListener(DisableActionPanel);
 
             _mouseFollower.Toggle(false);
         }
@@ -52,6 +54,14 @@ namespace Inventory
 
         private void HandleShowItemActions(UIInventoryItem inventoryItem)
         {
+            int index = _listUIItems.IndexOf(inventoryItem);
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            OnItemActionRequested?.Invoke(index);
         }
 
         private void HandleEndDeag(UIInventoryItem inventoryItem)
@@ -70,6 +80,11 @@ namespace Inventory
 
             OnSwapItem?.Invoke(_currentlyDraggedItemIndex, index);
             HandleItemSelection(inventoryItem);
+        }
+
+        private void DisableActionPanel()
+        {
+            _actionPanel.Toggle(false);
         }
 
         private void ResetDraggtedItem()
@@ -111,12 +126,25 @@ namespace Inventory
             DeselectAllItems();
         }
 
+        public void AddAction(string actionName, Action performAction)
+        {
+            _actionPanel.AddButton(actionName, performAction);
+        }
+
+        public void ShowItemAction(int itemIndex)
+        {
+            _actionPanel.Toggle(true);
+            _actionPanel.transform.position = _listUIItems[itemIndex].transform.position;
+        }
+
         private void DeselectAllItems()
         {
             foreach (UIInventoryItem item in _listUIItems)
             {
                 item.Deselect();
             }
+
+            _actionPanel.Toggle(false);
         }
 
         protected virtual void OnOnItemActionRequested(int obj)

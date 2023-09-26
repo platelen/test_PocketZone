@@ -8,11 +8,9 @@ namespace Inventory
     [CreateAssetMenu]
     public class InventorySo : ScriptableObject
     {
-        [SerializeField]
-        private List<InventoryItem> inventoryItems;
+        [SerializeField] private List<InventoryItem> inventoryItems;
 
-        [field: SerializeField]
-        public int Size { get; private set; } = 10;
+        [field: SerializeField] public int Size { get; private set; } = 10;
 
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
 
@@ -27,18 +25,20 @@ namespace Inventory
 
         public int AddItem(ItemSo item, int quantity)
         {
-            if(item.IsStackable == false)
+            if (item.IsStackable == false)
             {
                 for (int i = 0; i < inventoryItems.Count; i++)
                 {
-                    while(quantity > 0 && IsInventoryFull() == false)
+                    while (quantity > 0 && IsInventoryFull() == false)
                     {
                         quantity -= AddItemToFirstFreeSlot(item, 1);
                     }
+
                     InformAboutChange();
                     return quantity;
                 }
             }
+
             quantity = AddStackableItem(item, quantity);
             InformAboutChange();
             return quantity;
@@ -60,6 +60,7 @@ namespace Inventory
                     return quantity;
                 }
             }
+
             return 0;
         }
 
@@ -72,7 +73,7 @@ namespace Inventory
             {
                 if (inventoryItems[i].IsEmpty)
                     continue;
-                if(inventoryItems[i].item.ID == item.ID)
+                if (inventoryItems[i].item.ID == item.ID)
                 {
                     int amountPossibleToTake =
                         inventoryItems[i].item.MaxStackSize - inventoryItems[i].quantity;
@@ -92,12 +93,14 @@ namespace Inventory
                     }
                 }
             }
-            while(quantity > 0 && IsInventoryFull() == false)
+
+            while (quantity > 0 && IsInventoryFull() == false)
             {
                 int newQuantity = Mathf.Clamp(quantity, 0, item.MaxStackSize);
                 quantity -= newQuantity;
                 AddItemToFirstFreeSlot(item, newQuantity);
             }
+
             return quantity;
         }
 
@@ -134,6 +137,7 @@ namespace Inventory
                     continue;
                 returnValue[i] = inventoryItems[i];
             }
+
             return returnValue;
         }
 

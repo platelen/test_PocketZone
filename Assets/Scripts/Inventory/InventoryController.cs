@@ -35,7 +35,7 @@ namespace Inventory
             _inventoryPage.ResetAllItems();
             foreach (var item in inventoryState)
             {
-                _inventoryPage.UpdateData(item.Key, item.Value.item.ImageItem, 
+                _inventoryPage.UpdateData(item.Key, item.Value.item.ImageItem,
                     item.Value.quantity);
             }
         }
@@ -51,10 +51,54 @@ namespace Inventory
 
         private void HandleItemActionRequest(int itemIndex)
         {
+            InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                _inventoryPage.ShowItemAction(itemIndex);
+                _inventoryPage.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
+            }
+
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                _inventoryPage.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
+            }
+        }
+
+        private void DropItem(int itemIndex, int quantity)
+        {
+            _inventoryData.RemoveItem(itemIndex, quantity);
+            _inventoryPage.ResetSelection();
+        }
+
+        public void PerformAction(int itemIndex)
+        {
+            InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                _inventoryData.RemoveItem(itemIndex, 1);
+            }
+
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                itemAction.PerformAction(gameObject);
+                if (_inventoryData.GetItemAt(itemIndex).IsEmpty)
+                {
+                    _inventoryPage.ResetSelection();
+                }
+            }
         }
 
         private void HandleDragging(int itemIndex)
-        {InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
+        {
+            InventoryItem inventoryItem = _inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
             _inventoryPage.CreateDraggedItem(inventoryItem.item.ImageItem, inventoryItem.quantity);
