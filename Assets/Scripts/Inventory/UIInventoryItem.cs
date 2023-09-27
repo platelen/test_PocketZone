@@ -7,11 +7,16 @@ using UnityEngine.UI;
 namespace Inventory
 {
     public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler,
-        IDropHandler, IDragHandler
+        IDropHandler, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private Image _itemImage;
         [SerializeField] private TextMeshProUGUI _quantityText;
         [SerializeField] private Image _borderImage;
+        [SerializeField] private float _pressDuration = 0.5f;
+
+        private bool isPressing = false;
+        private float pressTime = 0f;
+
 
         public event Action<UIInventoryItem> OnItemClicked,
             OnItemDroppedOn,
@@ -25,6 +30,15 @@ namespace Inventory
         {
             ResetData();
             Deselect();
+        }
+
+        private void Update()
+        {
+            if (isPressing && Time.time - pressTime >= _pressDuration)
+            {
+                OnRightMouseButtonClick?.Invoke(this);
+                isPressing = false;
+            }
         }
 
         public void ResetData()
@@ -89,6 +103,23 @@ namespace Inventory
 
         public void OnDrag(PointerEventData eventData)
         {
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                isPressing = true;
+                pressTime = Time.time;
+            }
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                isPressing = false;
+            }
         }
     }
 }
