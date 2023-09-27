@@ -7,8 +7,7 @@ namespace Enemy
     public class EnemyAttack : MonoBehaviour
     {
         [SerializeField] private EnemyMover _enemyMover;
-        [SerializeField] private int _damage;
-        [SerializeField] private float _damageInterval = 2;
+        [SerializeField] private EnemyData _enemyData;
         [SerializeField] private Transform _attackPos;
         [SerializeField] private LayerMask _playerMask;
         [SerializeField] private float _radiusAttack;
@@ -39,7 +38,7 @@ namespace Enemy
             {
                 //GameObject effect = Instantiate(_hitEffect, transform.position, Quaternion.identity);
                 //Destroy(effect);
-                playerColliders[i].GetComponent<HealthPlayer>().TakeDamage(_damage);
+                playerColliders[i].GetComponent<HealthPlayer>().TakeDamage(_enemyData.Damage);
             }
         }
 
@@ -48,7 +47,7 @@ namespace Enemy
             while (_isTrigger)
             {
                 OnAttack();
-                yield return new WaitForSeconds(_damageInterval);
+                yield return new WaitForSeconds(_enemyData.DamageInterval);
             }
         }
     }

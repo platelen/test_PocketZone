@@ -5,13 +5,13 @@ namespace Enemy
     public class HealthEnemy : MonoBehaviour
     {
         [SerializeField] private HealthBar.HealthBar _healthBar;
-        [SerializeField] private int _maxHealth = 100;
+        [SerializeField] private HealthData _healthData;
         [SerializeField] private int _currentHealth;
 
         private void Start()
         {
-            _currentHealth = _maxHealth;
-            _healthBar.SetMaxHealth(_maxHealth);
+            _currentHealth = _healthData.MaxHealth;
+            _healthBar.SetMaxHealth(_healthData.MaxHealth);
         }
 
         private void Update()

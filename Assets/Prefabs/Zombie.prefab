@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 2233150603368876565}
-  _maxHealth: 150
+  _healthData: {fileID: 11400000, guid: 80fdbf51e290a1c40947f8b35d888a83, type: 2}
   _currentHealth: 0
 --- !u!114 &1517723875
 MonoBehaviour:
@@ -606,8 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyMover: {fileID: 1517723875}
-  _damage: 10
-  _damageInterval: 0.5
+  _enemyData: {fileID: 11400000, guid: 76a01e1bfa64be349ba12f5fe3f84648, type: 2}
   _attackPos: {fileID: 1318953912}
   _playerMask:
     serializedVersion: 2
